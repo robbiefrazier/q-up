@@ -56,10 +56,10 @@ ionic serve
 
 ## Authors
 
-Robbie Frazier
-Parker Brooks
-Kristina Pham
-Sarina Sanjel
+* Robbie Frazier
+* Parker Brooks
+* Kristina Pham
+* Sarina Sanjel
 
 ## Version History
 
