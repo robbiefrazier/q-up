@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Q-UP",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Q-UP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "680b3477"
+}
