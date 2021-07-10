@@ -21,12 +21,13 @@ sized table.
 * Windows 10 x64 21H1
 * Visual Studio Code with Powershell 1.57.1
     * Recommended VSCode extensions:
+    * Node.js Extension Pack v0.1.9
     * Angular Essentials (Version 12) v12.0.0
     * Prettier - Code formatter v8.0.1 (SHIFT + ALT + F)
     * Material Icon Theme v4.8.0
 * nvm-windows 1.1.7
-* node.js 16.4.0
-* npm 7.18.1
+* node.js 14.17.3
+* npm 6.14.13
 
 ### Development Environment
 
@@ -35,8 +36,8 @@ sized table.
     * Download nvm-setup.zip
     * Run the installer using default settings
 ```
-nvm install 16.4.0
-nvm use 16.4.0
+nvm install 14.17.3
+nvm use 14.17.3
 ```
 
 ### Installing
