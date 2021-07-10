@@ -31,7 +31,6 @@ sized table.
 
 ### Development Environment
 
-* Install Node.js Extension Pack 0.1.9 for VSCode
 * Install nvm-windows from https://github.com/coreybutler/nvm-windows/releases
     * Download nvm-setup.zip
     * Run the installer using default settings
