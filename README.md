@@ -18,8 +18,12 @@ sized table.
 
 ### Dependencies
 
-* Windows 10 x64 20H2
+* Windows 10 x64 21H1
 * Visual Studio Code with Powershell 1.57.1
+    * Recommended VSCode extensions:
+    * Angular Essentials (Version 12) v12.0.0
+    * Prettier - Code formatter v8.0.1 (SHIFT + ALT + F)
+    * Material Icon Theme v4.8.0
 * nvm-windows 1.1.7
 * node.js 16.4.0
 * npm 7.18.1
@@ -31,14 +35,14 @@ sized table.
     * Download nvm-setup.zip
     * Run the installer using default settings
 ```
-nvm install latest
+nvm install 16.4.0
 nvm use 16.4.0
 ```
 
 ### Installing
 
 ```
-npm install -g @ionic/cli cordova-res
+npm install -g @ionic/cli (may need sudo on Mac or Linux)
 git clone https://github.com/robbiefrazier/q-up.git q-up
 cd q-up
 npm install
