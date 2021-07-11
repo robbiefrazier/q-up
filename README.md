@@ -18,6 +18,8 @@ sized table.
 
 ### Dependencies
 
+### Development Environment
+
 * Windows 10 x64 21H1
 * Visual Studio Code with Powershell 1.57.1
     * Recommended VSCode extensions:
@@ -26,32 +28,47 @@ sized table.
     * Prettier - Code formatter v8.0.1 (SHIFT + ALT + F)
     * Material Icon Theme v4.8.0
 * nvm-windows 1.1.7
-* node.js 14.17.3
-* npm 6.14.13
-
-### Development Environment
-
-* Install nvm-windows from https://github.com/coreybutler/nvm-windows/releases
+    * Install nvm-windows from https://github.com/coreybutler/nvm-windows/releases
     * Download nvm-setup.zip
     * Run the installer using default settings
+* node.js 14.17.3 (DO NOT INSTALL LATEST VERSION)
+* npm 6.14.13
 ```
 nvm install 14.17.3
 nvm use 14.17.3
 ```
-
-### Installing
-
+* ionic 6.16.3
 ```
-npm install -g @ionic/cli (may need sudo on Mac or Linux)
+npm install -g @ionic/cli
+```
+* Angular CLI 12.0.5
+```
+npm install -g @angular/cli
+```
+* Capacitor 3.1.1
+```
+npm install -g @capacitor/core @capacitor/cli @capacitor/android
+```
+* Android Studio 4.2.2
+* Set user environment variables:
+    * ANDROID_SDK_ROOT  : C:\Users\<USERNAME>\AppData\Local\Android\Sdk
+    * JAVA_HOME         : C:\Program Files\Android\Android Studio\jre
+
+### Initial setup
+```
 git clone https://github.com/robbiefrazier/q-up.git q-up
 cd q-up
 npm install
 ```
 
-### Executing program
-
+### Developing
 ```
 ionic serve
+```
+
+### Executing program (Android)
+```
+ionic capacitor run android
 ```
 
 ## Help
