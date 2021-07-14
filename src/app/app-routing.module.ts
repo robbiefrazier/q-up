@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'reset',
     loadChildren: () => import('./reset/reset.module').then( m => m.ResetPageModule)
+  },  {
+    path: 'patron',
+    loadChildren: () => import('./patron/patron.module').then( m => m.PatronPageModule)
   },
+
 ];
 
 @NgModule({
