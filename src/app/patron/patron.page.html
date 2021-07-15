@@ -1,32 +1,33 @@
 <ion-content class="background" scroll="true">
   <ion-grid>
-    <ion-row class="ion-justify-content-evenly">
-      <ion-col size-md="5">
-        <div class="content">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-md="5" class="align-self-center">
+        <div class="content" class="ion-text-center">
           <div class="ion-padding">
-          Hi <!-- user's name goes here (Optional) -->!
+
           <p>
-            Party Size: <input
-              type="number"
-              [(ngModel)]="size"
-              required
-              />
+            How many people are in your party?
+            </p>
+            <p>
+              <ion-button class="actionbutton" fill="clear">
+                <ion-icon name="caret-up-sharp" ></ion-icon>
+              </ion-button>
+
+              <ion-input type="number" value="0" required></ion-input>
+
+              <ion-button class="actionbutton" fill="clear">
+                <ion-icon name="caret-down-sharp" ></ion-icon>
+              </ion-button>
           </p>
-          <p>
-            Phone Number: <input
-              type="number"
-              [(ngModel)]="phone"
-              minlength="10"
-              maxlength="10"
-              />
-          </p>
+
+
           </div>
         </div>
         <ion-button class="actionbutton"
-          expand="block" fill="clear"
+          expand="block" fill="outline" size="small"
           style="text-transform: none"
-          ><b>Find a Restaurant</b></ion-button
-    >
+          ><b>Find a Restaurant</b></ion-button>
+
       </ion-col>
     </ion-row>
   </ion-grid>
