@@ -1,14 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>patron</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
+<ion-content class="background" scroll="true">
   <ion-grid>
-    <ion-row>
-      <ion-col size-md="6" offset="3">
-
+    <ion-row class="ion-justify-content-evenly">
+      <ion-col size-md="5">
+        <div class="content">
+          <div class="ion-padding">
+          Hi <!-- user's name goes here (Optional) -->!
+          <p>
+            Party Size: <input
+              type="number"
+              [(ngModel)]="size"
+              required
+              />
+          </p>
+          <p>
+            Phone Number: <input
+              type="number"
+              [(ngModel)]="phone"
+              minlength="10"
+              maxlength="10"
+              />
+          </p>
+          </div>
+        </div>
+        <ion-button class="actionbutton"
+          expand="block" fill="clear"
+          style="text-transform: none"
+          ><b>Find a Restaurant</b></ion-button
+    >
       </ion-col>
     </ion-row>
   </ion-grid>
