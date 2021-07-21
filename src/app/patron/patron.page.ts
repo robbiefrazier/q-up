@@ -6,8 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patron.page.scss'],
 })
 export class PatronPage implements OnInit {
+  currentNumber: any;
 
-  constructor() { }
+  constructor(){this.currentNumber=1;}
+  increment() {
+    this.currentNumber += 1;
+    console.log(this.currentNumber + 1);
+  }
+  decrement() {
+    if(this.currentNumber>1){
+        this.currentNumber -= 1;
+        console.log(this.currentNumber - 1);}
+  }
 
   ngOnInit() {
   }

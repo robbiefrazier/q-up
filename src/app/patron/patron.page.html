@@ -4,30 +4,24 @@
       <ion-col size-md="5" class="align-self-center">
         <div class="content" class="ion-text-center">
           <div class="ion-padding">
-
           <p>
             How many people are in your party?
             </p>
             <p>
-              <ion-button class="actionbutton" fill="clear">
-                <ion-icon name="caret-up-sharp" ></ion-icon>
+              <ion-button class="actionbutton" fill="clear" (click)="increment()">
+                <ion-icon name="caret-up-sharp"></ion-icon>
               </ion-button>
-
-              <ion-input type="number" value="0" required></ion-input>
-
-              <ion-button class="actionbutton" fill="clear">
-                <ion-icon name="caret-down-sharp" ></ion-icon>
+              <ion-input type="number" [(ngModel)]="currentNumber" text-right id="input" ></ion-input>
+              <ion-button class="actionbutton" fill="clear" (click)="decrement()">
+                <ion-icon name="caret-down-sharp"></ion-icon>
               </ion-button>
           </p>
-
-
           </div>
         </div>
         <ion-button class="actionbutton"
           expand="block" fill="outline" size="small"
           style="text-transform: none"
-          ><b>Find a Restaurant</b></ion-button>
-
+          >Find a Restaurant</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
