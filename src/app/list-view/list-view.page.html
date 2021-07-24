@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Resturaunts</ion-title>
+    <ion-buttons slot="end">
+      <ion-button
+      routerLink="/map"
+      routerDirection="root">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- NgFor is a built-in template directive that makes it easy to iterate over something like an array -->
+  <!-- Use ngFor to go through the data that was passed from map.ts to listView.ts and make an ionic list with the markers -->
+  <ion-item *ngFor="let marker of data">
+    {{marker.number}} - {{ marker.title }}
+  </ion-item>
+
+</ion-content>

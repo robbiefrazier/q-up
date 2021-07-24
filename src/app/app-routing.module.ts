@@ -18,7 +18,15 @@ const routes: Routes = [
   {
     path: 'reset',
     loadChildren: () => import('./reset/reset.module').then( m => m.ResetPageModule)
+  },  {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
   },
+  {
+    path: 'list-view',
+    loadChildren: () => import('./list-view/list-view.module').then( m => m.ListViewPageModule)
+  },
+
 ];
 
 @NgModule({
