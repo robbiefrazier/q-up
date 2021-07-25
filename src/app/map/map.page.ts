@@ -124,10 +124,10 @@ export class MapPage {
   //Function to add the InfoWindow to the map
   addInfoWindowToMarker(marker){
     //Populate the infoWindow in html format
-    let infoWindowContent = '<div id="content">'+
+    let infoWindowContent = '<div id="infoWindow">'+
                               '<h2 id="firstHeading" class="firstHeading" style="color:black">'+ marker.title + '</h2>' +
                               '<p style="color:black">Distance: ' + marker.distance + ' miles</p>'+
-                              '<ion-button color="danger">Book Table</ion-button>'+
+                              '<ion-button id="book" color="danger">Book Table</ion-button>'+
                              '</div>';
     let infoWindow = new google.maps.InfoWindow({
       content: infoWindowContent
@@ -137,6 +137,14 @@ export class MapPage {
     marker.addListener('click', () => {
       this.closeAllInfoWindows();
       infoWindow.open(this.map,marker);
+
+      google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+        document.getElementById('book').addEventListener('click', () => {
+          console.log('book button pressed.');
+          this.router.navigate(['/patron']);
+
+        })
+      })
     });
     this.infoWindows.push(infoWindow);
   }
