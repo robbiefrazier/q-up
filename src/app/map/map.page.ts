@@ -4,13 +4,16 @@ import { Geolocation } from '@capacitor/geolocation';
 import { Platform } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
+import { environment } from '../../environments/environment';
+import { createClient, SupabaseClient } from '@supabase/supabase-js'
 
 
 
 
 providers: [
   Geolocation,
-  NavController
+  NavController,
+  SupabaseClient
 ]
 declare var google: any;
 
@@ -22,11 +25,13 @@ declare var google: any;
 
 //TO DO:
 //  Add functionality to pull markers from database
+//  Database PW: QupUTASummer2021
 
 
 export class MapPage {
 
   map: any;
+  supabase: SupabaseClient;
 
   @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
 
@@ -34,20 +39,7 @@ export class MapPage {
   infoWindows: any = [];
 
   //Array of Test Markers
-  markers: any = [
-    {
-      title: "Test Location",
-      latitude: "32.7986",
-      longitude: "-97.3533",
-      number: 1
-    },
-    {
-      title: "Test Location 2",
-      latitude: "32.8125",
-      longitude: "-97.3421",
-      number: 2
-    }
-  ];
+  markers: any =[];
 
   geolocation: Geolocation;
   latitude: any;
@@ -57,10 +49,18 @@ export class MapPage {
 
 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    //Set up the session to be able to query DB in constructor
+    this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey, {
+      autoRefreshToken: true,
+      persistSession: true
+    });
+  }
 
 
   ionViewDidEnter(){
+    //get markers and show map when view is entered
+      this.getMarkers()
       this.showMap()
   }
 
@@ -94,8 +94,6 @@ export class MapPage {
   }
   //Add markers to the map
   addMarkers(markers,userPosition){
-
-    //let num = 1;
     //Go through all markers in the marker array
     for(let marker of markers){
       //calculate distance from user
@@ -140,7 +138,6 @@ export class MapPage {
 
       google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
         document.getElementById('book').addEventListener('click', () => {
-          console.log('book button pressed.');
           this.router.navigate(['/patron']);
 
         })
@@ -182,8 +179,6 @@ export class MapPage {
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
     this.addMarkers(this.markers,position)
   }
-
-
   //Use Angulars Navigation module to pass the array of markers
   //to the list view so the Database only need to be queried once
 
@@ -197,6 +192,29 @@ export class MapPage {
     };
     //Navigate to the list view passing the marker list
     this.router.navigate(['/list-view'], navigationExtras)
+  }
+
+  async getMarkers() {
+    //select all the rows from the marker table
+    let { data, error } = await this.supabase.from('Markers').select()
+    //set up array to put into this.markers
+    let markerArray = [];
+    let num = 1;
+    for (let obj of data)
+    {
+      //pull the DB cols into an object to store in marker array
+      var object = {
+        title:obj.locationName,
+        latitude:obj.latitude,
+        longitude:obj.longitude,
+        number:num
+      }
+      num = num + 1;
+      //push DB entry into the marker array
+      markerArray.push(object)
+    }
+    //set the marker array
+    this.markers = markerArray;
   }
 
 
