@@ -1,0 +1,24 @@
+<ion-content class="background" scroll="true">
+  <ion-grid>
+    <ion-row class="ion-justify-content-evenly">
+      <ion-col>
+        <div class="content">
+          <div class="ion-no-padding">
+          <!-- name of restaurant goes here -->
+          <ngx-datatable class="material"
+            [rows]="rows"
+            [rowHeight]="50"
+            [columns]="columns"
+            [columnMode]="'force'"
+            [headerHeight]="60"
+            [footerHeight]="50">
+            <ngx-datatable-column name="Name" [sortable]="false"></ngx-datatable-column>
+            <ngx-datatable-column name="Size" [sortable]="false"></ngx-datatable-column>
+            <ngx-datatable-column name="Time" [sortable]="false"></ngx-datatable-column>
+          </ngx-datatable>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

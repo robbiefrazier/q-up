@@ -1,0 +1,29 @@
+{
+  "waitlistTest": [
+      {
+          "name": "Frazier",
+          "size": "4",
+          "time": "7"
+      },
+      {
+          "name": "Pham",
+          "size": "6",
+          "time": "9"
+      },
+      {
+          "name": "Brooks",
+          "size": "5",
+          "time": "12"
+      },
+      {
+          "name": "Sanjel",
+          "size": "3",
+          "time": "16"
+      },
+      {
+          "name": "Conly",
+          "size": "4",
+          "time": "21"
+      }
+  ]
+}
