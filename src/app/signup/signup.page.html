@@ -19,6 +19,29 @@
         placeholder="Confirm Password"
         style="padding-left: 10px !important; font-family: 'Nunito', sans-serif"
       ></ion-input>
+
+      <ion-list>
+        <ion-radio-group>
+          <ion-list-header>
+            <ion-label>Are you registering as:</ion-label>
+          </ion-list-header>
+
+          <ion-item>
+            <ion-label style="font-size: small;
+            color: #f2f2f2;
+            font-family: 'Nunito', sans-serif;">Patron</ion-label>
+            <ion-radio slot="start" value="patron" color="light"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label style="font-size: small;
+            color: #f2f2f2;
+            font-family: 'Nunito', sans-serif;">Restaurant</ion-label>
+            <ion-radio slot="start" value="rest" color="light"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+
     </div>
     <ion-button
       class="actionbutton"
