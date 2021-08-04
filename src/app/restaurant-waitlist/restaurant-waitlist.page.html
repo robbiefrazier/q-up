@@ -1,0 +1,45 @@
+<ion-content class="background" scroll="true">
+  <ion-grid>
+    <ion-row class="ion-justify-content-evenly">
+      <ion-col>
+
+        <div class="content">
+          <div class="ion-padding">
+
+
+<body>
+
+
+                        <td><ion-input  placeholder="Heads"></ion-input></td>
+                          <td><ion-input  placeholder="Name"></ion-input></td>
+                           <td><ion-input  placeholder="Mobile"></ion-input></td>
+                           <ion-button class="actionbutton"  fill="clear" ><b>ADD CUSTOMER</b></ion-button>
+
+<br>
+
+<ngx-datatable class="material"
+[rows]="rows"
+[rowHeight]="50"
+[columns]="columns"
+[columnMode]="'force'"
+[headerHeight]="60"
+[footerHeight]="50">
+<ngx-datatable-column name="Position" [sortable]="false"></ngx-datatable-column>
+<ngx-datatable-column name="Name" [sortable]="false"></ngx-datatable-column>
+<ngx-datatable-column name="Size" [sortable]="false"></ngx-datatable-column>
+<ngx-datatable-column name="Phone" [sortable]="false"></ngx-datatable-column>
+<ngx-datatable-column name="Time" [sortable]="false"></ngx-datatable-column>
+</ngx-datatable>
+</body>
+      <!-- end wrapper -->
+    </div>
+  </div>
+      </ion-col>
+</ion-row>
+</ion-grid>
+</ion-content>
+
+
+
+
+

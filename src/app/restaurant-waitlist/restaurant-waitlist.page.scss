@@ -1,0 +1,114 @@
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+ion-content{
+  --ion-background-color:#a30000;
+  --color: #181212;
+  font-size: 30px;
+  margin-left:center;
+}
+
+ion-col {
+  border: 3px solid #010507;
+}
+.ngx-datatable.material{
+  .datatable-header {
+    .datatable-header-cell {
+      background: clear;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      background: #a30000;
+      text-align: center;
+    }
+  }
+  .datatable-body .datatable-body-row .datatable-body-cell {
+    text-align: center;
+    vertical-align: center;
+    color: #a30000;
+    font-size: 16px;
+    font-weight: 550;
+  }
+}
+.datatable-footer {
+  background: rgba(218, 226, 234,1);
+  padding: 0 1em 0 1em;
+
+  .pager {
+     li {
+        padding: 0 1em !important;
+
+        a {
+           color: rgba(68, 68, 68, 1);
+           text-decoration: none;
+        }
+     }
+  }
+}
+
+// Style rules for the footer pagination elements
+.datatable-icon-done-all:before {
+  content: ">>";
+}
+
+.datatable-icon-left:before {
+  content: "<";
+}
+
+.datatable-icon-right:before {
+  content: ">";
+}
+
+.datatable-icon-skip:before {
+  content: ">>";
+}
+
+.datatable-icon-prev:before {
+  content: "<<";
+}
+
+ion-input{
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  font-size: small;
+}
+.actionbutton{
+  background-color: #eff67b;
+  color: black;
+  border-radius: 5px;
+  margin-left:center;
+  margin-right: center;
+  font-size: small;
+  font-family: 'Nunito', sans-serif;
+}
+
+.buttons-action{
+  margin-left: 5px;
+}
+ion-input{
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  font-size: small;
+}
+
+.content{
+  margin-left: center;
+  margin-right: center;
+  width: 100%;
+}
+
+
+ion-icon {
+  font-size: 40px;
+  color: #0f0606;
+  margin-left: center;
+  margin-right: center;
+  margin-left: 30px;;
+}
+
+
+ion-col {
+  border: 3px solid #010507;
+}
+
