@@ -1,9 +1,43 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>restaurant-info</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content class="background" scroll="true">
+  <ion-grid>
+    <ion-row class="ion-justify-content-evenly">
+      <ion-col>
+        <div class="content">
+          <div class="ion-padding">
+            <ion-img src="./assets/logo_red_bg.png"></ion-img>
+            <ion-label>Name of Restaurant</ion-label>
+            <ion-input type="text" (keypress)="keyPressAlpha($event)" required></ion-input>
+            <br/>
+            <ion-label>Address of Restaurant</ion-label>
+            <ion-input type="text" (keypress)="keyPressAlpha($event)" required></ion-input>
+            <br/>
+            <ion-label>City</ion-label>
+            <ion-input type="text" (keypress)="keyPressAlpha($event)" required></ion-input>
+            <br/>
+            <ion-label>State</ion-label>
+            <ion-input type="text" placeholder="Ex: Texas" (keypress)="keyPressAlpha($event)" required></ion-input>
+            <br/>
+            <ion-label>Zipcode</ion-label>
+            <ion-input type="number" placeholder="5-digit Zipcode" maxlength="5" minlength="5"
+            name="userZip"
+            (keypress)="numberOnlyValidation($event)" required></ion-input>
+            <br/>
+            <ion-label>Enter 10-digit Phone Number</ion-label>
+            <ion-input type="tel" placeholder="Ex: 8174567890" maxlength="10" minlength="10"
+            name="userCount"
+            (keypress)="numberOnlyValidation($event)" required></ion-input>
+            <br/>
+          </div>
+          <ion-button
+            class="actionbutton"
+            expand="full"
+            fill="clear"
+            style="text-transform: none"
+            routerLink="/floorplan"
+            routerDirection="root"
+            ><b>Submit</b></ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
