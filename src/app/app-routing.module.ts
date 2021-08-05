@@ -34,7 +34,11 @@ const routes: Routes = [
   {
     path: 'patron-waitlist',
     loadChildren: () => import('./patron-waitlist/patron-waitlist.module').then( m => m.PatronWaitlistPageModule)
+  },  {
+    path: 'patron-info',
+    loadChildren: () => import('./patron-info/patron-info.module').then( m => m.PatronInfoPageModule)
   },
+
 
 
 ];
