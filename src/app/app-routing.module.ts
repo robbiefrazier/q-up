@@ -38,6 +38,10 @@ const routes: Routes = [
     path: 'patron-info',
     loadChildren: () => import('./patron-info/patron-info.module').then( m => m.PatronInfoPageModule)
   },
+  {
+    path: 'restaurant-info',
+    loadChildren: () => import('./restaurant-info/restaurant-info.module').then( m => m.RestaurantInfoPageModule)
+  },
 
 
 
