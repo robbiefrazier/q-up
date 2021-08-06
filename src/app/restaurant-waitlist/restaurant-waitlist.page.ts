@@ -26,7 +26,7 @@ export class RestaurantWaitlistPage implements OnInit {
       {name:  'phone'},
       { name: 'time' }
     ];
-    this.http.get<Data>('../../assets/waitlistTest.json')
+    this.http.get<Data>('../../assets/restaurant_waitlist.json')
     .subscribe((res) => {
       console.log(res);
       this.rows = res.waitlistTest;
