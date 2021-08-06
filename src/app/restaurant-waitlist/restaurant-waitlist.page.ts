@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ViewEncapsulation } from '@angular/core';
 
 export interface Data {
-  waitlistTest: string;
+  restaurant_waitlist: string;
 }
 
 @Component({
