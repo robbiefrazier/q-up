@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ViewEncapsulation } from '@angular/core';
 
 export interface Data {
-  restaurant_waitlist: string;
+  waitlistTest: string;
 }
 
 @Component({
@@ -16,7 +16,7 @@ export class RestaurantWaitlistPage implements OnInit {
   public data: Data;
   public columns: any;
   public rows: any;
-  restaurant_waitlist: any[];
+  waitlistTest: any[];
 
   constructor(private http: HttpClient) {
     this.columns = [
@@ -26,17 +26,17 @@ export class RestaurantWaitlistPage implements OnInit {
       {name:  'phone'},
       { name: 'time' }
     ];
-    this.http.get<Data>('../../assets/restaurant_waitlist.json')
+    this.http.get<Data>('../../assets/waitlistTest.json')
     .subscribe((res) => {
       console.log(res);
-      this.rows = res.restaurant_waitlist;
+      this.rows = res.waitlistTest;
     });
 }
 
   ngOnInit() {
-    fetch('./assets/restaurant_waitlist.json').then(res => res.json())
+    fetch('./assets/waitlistTest.json').then(res => res.json())
     .then(json => {
-      this.restaurant_waitlist = json;
+      this.waitlistTest = json;
     });
   }
 
