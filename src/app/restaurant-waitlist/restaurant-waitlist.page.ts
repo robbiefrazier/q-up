@@ -16,7 +16,7 @@ export class RestaurantWaitlistPage implements OnInit {
   public data: Data;
   public columns: any;
   public rows: any;
-  waitlistTest: any[];
+  restaurant_waitlist: any[];
 
   constructor(private http: HttpClient) {
     this.columns = [
@@ -29,14 +29,14 @@ export class RestaurantWaitlistPage implements OnInit {
     this.http.get<Data>('../../assets/restaurant_waitlist.json')
     .subscribe((res) => {
       console.log(res);
-      this.rows = res.waitlistTest;
+      this.rows = res.restaurant_waitlist;
     });
 }
 
   ngOnInit() {
-    fetch('./assets/waitlistTest.json').then(res => res.json())
+    fetch('./assets/restaurant_waitlist.json').then(res => res.json())
     .then(json => {
-      this.waitlistTest = json;
+      this.restaurant_waitlist = json;
     });
   }
 
