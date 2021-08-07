@@ -1,0 +1,40 @@
+{
+  "floorplanTest": [
+    {
+      "table": "1",
+      "no. of seat": "4",
+      "status": "empty"
+    },
+    {
+      "table": "2",
+      "no. of seat": "5",
+      "status": "empty"
+    },
+    {
+      "table": "3",
+      "no. of seat": "2",
+      "status": "full"
+    },
+    {
+        "table": "4",
+        "no. of seat": "3",
+        "status": "full"
+    },
+    {
+      "table": "5",
+      "no. of seat": "8",
+      "status": "full"
+    },
+      {
+        "table": "6",
+        "no. of seat": "2",
+        "status": "empty"
+    },
+    {
+      "table": "7",
+      "no. of seat": "4",
+      "status": "empty"
+    }
+
+  ]
+}
