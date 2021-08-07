@@ -26,7 +26,7 @@ export class RestaurantFunctionPage   {
     });
   }
 
-
+  //function to nav to waitlist with info needed for DB
   async showWait()
   {
     let navigationExtras: NavigationExtras = {
@@ -34,8 +34,32 @@ export class RestaurantFunctionPage   {
         restEmail: this.userEmail
       }
     };
-    //Navigate to the list view passing the marker list
+    //Navigate to the waitlist
     this.router.navigate(['/restaurant-waitlist'], navigationExtras)
+  }
+
+  //function to nav to floor plan with info needed for DB
+  async showFloorPlan()
+  {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        restEmail: this.userEmail
+      }
+    };
+    //Navigate to the floor plan
+    this.router.navigate(['/floorplan'], navigationExtras)
+  }
+
+  //function to nav to info with info needed for DB
+  async showInfo()
+  {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        restEmail: this.userEmail
+      }
+    };
+    //Navigate to the info
+    this.router.navigate(['/restaurant-info'], navigationExtras)
   }
 }
 

@@ -21,7 +21,8 @@ export class RestaurantWaitlistPage implements OnInit {
   public rows: any;
   public userEmail: any;
   public restId:any;
-  public dbWaitList:any[];
+  public dbWaitList={waitList:[]};
+  public rowNum: any;
   waitlistTest: any[];
   supabase: SupabaseClient;
 
@@ -32,31 +33,22 @@ export class RestaurantWaitlistPage implements OnInit {
     });
 
     this.columns = [
-      {name: 'position'},
-      { name: 'name' },
-      { name: 'size' },
-      {name:  'phone'},
-      { name: 'time' }
+      {prop:'email',name: 'Email'},
+      {prop:'phone',name: 'Phone'},
+      {prop:'size',name: 'Size' },
+      {prop:'time',name: 'Time' }
     ];
-    this.http.get<Data>('../../assets/waitlistTest.json')
-    .subscribe((res) => {
-      console.log(res);
-      this.rows = res.waitlistTest;
-    });
-
-
-
 
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
-        //set the data var to be the array of markers passed in
         this.userEmail = this.router.getCurrentNavigation().extras.state.restEmail;
       }
-      this.getID();
+      //this.getID();
     });
 }
 
   ngOnInit() {
+    this.getID()
     fetch('./assets/waitlistTest.json').then(res => res.json())
     .then(json => {
       this.waitlistTest = json;
@@ -65,6 +57,7 @@ export class RestaurantWaitlistPage implements OnInit {
 
   async getID()
   {
+    //pulls the restID from the Db for the location based on account email
     let { data, error } = await this.supabase.from('Restaurants').select().eq('email',this.userEmail).single()
     this.restId = data.restId;
     this.getList();
@@ -72,9 +65,22 @@ export class RestaurantWaitlistPage implements OnInit {
 
   async getList()
   {
+    //uses the Id from the DB to pull entries from the waitlist for this location
     let { data, error } = await this.supabase.from('waitList').select().eq('restId',this.restId)
-    this.dbWaitList = data;
-    console.log(this.dbWaitList)
+    for( let item in data)
+    {
+      var jsonData = {};
+      //set the DB table row to a json format to be used by ngx-datatable
+      jsonData['email'] = data[item].userEmail
+      jsonData['phone'] = data[item].userPhone.toString()
+      jsonData['size'] = data[item].partySize.toString()
+      jsonData['time'] = data[item].timeStartWaitedOrSeated
+
+      this.dbWaitList.waitList.push(jsonData);
+    }
+    this.rowNum = data.length;
+    this.rows = this.dbWaitList.waitList;
+
   }
 
 }
