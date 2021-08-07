@@ -23,8 +23,9 @@ declare var google: any;
   styleUrls: ['map.page.scss'],
 })
 
-//TO DO:
-//  Add functionality to pull markers from database
+//
+//  Test 2  32.8125 -97.3421
+//  Test 3  32.7479 -97.2064
 //  Database PW: QupUTASummer2021
 
 

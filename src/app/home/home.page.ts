@@ -44,7 +44,7 @@ export class HomePage {
           };
           if(user.userType == "restaurant")
           {
-            this.router.navigate(['/restaurant-waitlist'],navigationExtras)
+            this.router.navigate(['/restaurant-function'],navigationExtras)
           }
           if(user.userType == "patron")
           {
