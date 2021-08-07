@@ -47,6 +47,14 @@ const routes: Routes = [
     path: 'restaurant-waitlist',
     loadChildren: () => import('./restaurant-waitlist/restaurant-waitlist.module').then( m => m.RestaurantWaitlistPageModule)
   },
+  {
+    path: 'floorplan',
+    loadChildren: () => import('./floorplan/floorplan.module').then( m => m.FloorplanPageModule)
+  },
+  {
+    path: 'restaurant-function',
+    loadChildren: () => import('./restaurant-function/restaurant-function.module').then( m => m.RestaurantFunctionPageModule)
+  },
 
 
 
