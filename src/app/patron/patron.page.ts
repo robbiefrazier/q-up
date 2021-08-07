@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-patron',
@@ -8,15 +9,25 @@ import { Component, OnInit } from '@angular/core';
 export class PatronPage implements OnInit {
   currentNumber: any;
 
-  constructor(){this.currentNumber=1;}
+  constructor(private router: Router){this.currentNumber=1;}
   increment() {
     this.currentNumber += 1;
-    console.log(this.currentNumber + 1);
+    console.log(this.currentNumber);
   }
   decrement() {
     if(this.currentNumber>1){
         this.currentNumber -= 1;
-        console.log(this.currentNumber - 1);}
+        console.log(this.currentNumber);}
+  }
+  async sendToWait()
+  {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        partSize: this.currentNumber
+      }
+    };
+    //Navigate to the list view passing the marker list
+    this.router.navigate(['/patron-waitlist'], navigationExtras)
   }
 
   ngOnInit() {

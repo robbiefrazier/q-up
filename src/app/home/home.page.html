@@ -7,11 +7,14 @@
       <ion-img src="./assets/logo_red_bg.png"></ion-img>
       <ion-input
         placeholder="Email"
+        [(ngModel)] ="email"
         style="padding-left: 10px !important; font-family: 'Nunito', sans-serif"
       ></ion-input>
       <br />
       <ion-input
         placeholder="Password"
+        type="password"
+        [(ngModel)] ="pass"
         style="padding-left: 10px !important; font-family: 'Nunito', sans-serif"
       ></ion-input>
     </div>
@@ -20,7 +23,7 @@
       expand="full"
       fill="clear"
       style="text-transform: none"
-      ><b>Sign In</b></ion-button
+      (click)="logon()"><b>Sign In</b></ion-button
     >
     <ion-button
       fill="clear"

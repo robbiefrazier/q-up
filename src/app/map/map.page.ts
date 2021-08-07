@@ -3,7 +3,7 @@ import { ViewChild, ElementRef } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { Platform } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
-import { Router, NavigationExtras } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { createClient, SupabaseClient } from '@supabase/supabase-js'
 
@@ -46,15 +46,29 @@ export class MapPage {
   longitude: any;
   platform: Platform;
   dataReturned: any;
+  userEmail: any;
+  userPhone: any;
 
 
 
-  constructor(private router: Router) {
+  constructor(private route: ActivatedRoute,private router: Router) {
     //Set up the session to be able to query DB in constructor
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey, {
       autoRefreshToken: true,
       persistSession: true
     });
+
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        //set the data var to be the array of markers passed in
+        this.userEmail = this.router.getCurrentNavigation().extras.state.userEmail;
+        this.userPhone = this.router.getCurrentNavigation().extras.state.userPhone;
+      }
+      console.log("THESE ARE THE USER DEETS:")
+      console.log(this.userEmail);
+      console.log(this.userPhone);
+    });
+
   }
 
 
