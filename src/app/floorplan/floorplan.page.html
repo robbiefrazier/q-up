@@ -1,0 +1,38 @@
+<ion-content class="background" scroll="true">
+  <ion-grid>
+    <ion-row class="ion-justify-content-evenly">
+
+  <div class="content">
+    <div class="ion-padding">
+
+      <ngx-datatable class="material"
+      [rows]="rows"
+      [rowHeight]="50"
+      [columns]="columns"
+      [columnMode]="'force'"
+      [headerHeight]="60"
+      [footerHeight]="50">
+      <ngx-datatable-column name="Table" [sortable]="false"></ngx-datatable-column>
+      <ngx-datatable-column name="No. of Seat" [sortable]="false"></ngx-datatable-column>
+      <ngx-datatable-column name="Status" [sortable]="false"></ngx-datatable-column>
+    </ngx-datatable>
+    <ion-button
+      fill="clear"
+      style="
+        font-size: small;
+        color: #131111;
+        text-transform: none;
+        font-family: 'Nunito', sans-serif;
+      "
+      routerLink="/restaurant-function"
+      routerDirection="root"
+      ><p style="font-size: small">
+        Back
+      </p></ion-button
+    >
+    </div>
+  </div>
+
+</ion-row>
+</ion-grid>
+</ion-content>
