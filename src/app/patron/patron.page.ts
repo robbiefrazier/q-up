@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from '../../environments/environment';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-patron',
@@ -18,7 +19,7 @@ export class PatronPage implements OnInit {
   supabase: SupabaseClient;
   seatOrWait:any;
 
-  constructor(private route: ActivatedRoute,private router: Router){
+  constructor(private route: ActivatedRoute,private router: Router,public toastController: ToastController){
     this.currentNumber=1;
 
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey, {
@@ -40,12 +41,27 @@ export class PatronPage implements OnInit {
       this.currentNumber += 1;
       console.log(this.currentNumber);
     }
+    //if the user tries to make a table reservation for more than 6 people
+    else
+    {
+      //present them with a message alerting them
+      this.presentToast();
+    }
   }
   decrement() {
     if(this.currentNumber>1){
         this.currentNumber -= 1;
         console.log(this.currentNumber);}
   }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Tables larger than 6 are not supported. Please contact the location for large table options.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
   async sendToWait()
   {
     //Check for the table they requested
