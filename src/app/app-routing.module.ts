@@ -54,7 +54,11 @@ const routes: Routes = [
   {
     path: 'restaurant-function',
     loadChildren: () => import('./restaurant-function/restaurant-function.module').then( m => m.RestaurantFunctionPageModule)
+  },  {
+    path: 'patron-tableready',
+    loadChildren: () => import('./patron-tableready/patron-tableready.module').then( m => m.PatronTablereadyPageModule)
   },
+
 
 
 
