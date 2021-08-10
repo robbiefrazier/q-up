@@ -28,20 +28,18 @@ export class PatronPage implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
-        //set the data var to be the array of markers passed in
+        //Get user email, phone and location selection from Map page
         this.userEmail = this.router.getCurrentNavigation().extras.state.userEmail;
         this.userPhone = this.router.getCurrentNavigation().extras.state.userPhone;
         this.restName = this.router.getCurrentNavigation().extras.state.marker;
       }
-      //console.log("THESE ARE THE USER DEETS:")
-      //console.log(this.userEmail);
-      //console.log(this.userPhone);
-      //console.log(this.restName);
     });
   }
   increment() {
-    this.currentNumber += 1;
-    console.log(this.currentNumber);
+    if(this.currentNumber<6){
+      this.currentNumber += 1;
+      console.log(this.currentNumber);
+    }
   }
   decrement() {
     if(this.currentNumber>1){
@@ -50,8 +48,8 @@ export class PatronPage implements OnInit {
   }
   async sendToWait()
   {
+    //Check for the table they requested
     this.checkForTable()
-    //this.logUser()
     this.router.navigate(['/patron-waitlist'])
   }
   async logUser()
@@ -65,10 +63,9 @@ export class PatronPage implements OnInit {
 
   async getRestId()
   {
+    //Get the Restauraunt Id based on the name passed in
     let { data, error } = await this.supabase.from('Restaurants').select().eq('locationName',this.restName).single()
     this.restId = data.restId;
-    //console.log("THIS IS THE REST ID");
-    //console.log(this.restId);
   }
 
   async checkForTable()
@@ -78,62 +75,69 @@ export class PatronPage implements OnInit {
 
   async updateTable()
   {
+    //set user default to waited
     this.seatOrWait = "waited"
+    //select the restauraunt from the DB based on the ID
     let { data, error } = await this.supabase.from('Restaurants').select().eq('restId',this.restId)
-    //console.log("AVALABNLE TABLES")
-    //console.log(data[0].tableVar)
 
+    //select a 2 person table for 2 or less guests
     if(this.currentNumber > 0 && this.currentNumber <= 2)
     {
-     //console.log(data[0].availableTwoTables);
      this.numToUpdateInRestTable = data[0].availableTwoTables;
+     //The location has an open table so seat the user and log their info
      if(this.numToUpdateInRestTable != 0)
      {
        this.seatOrWait = "seated";
        this.updateTwoTables();
        this.logUser()
      }
+     //No open tables of user selection set user to waiting and queue them
      if(this.numToUpdateInRestTable == 0)
      {
       this.seatOrWait = "waited";
       this.logUser()
      }
     }
+    //select a 4 person table for 3-4 guests
     if(this.currentNumber > 2 && this.currentNumber <= 4)
     {
-      //console.log(data[0].availableFourTables);
       this.numToUpdateInRestTable = data[0].availableFourTables;
+      //The location has an open table so seat the user and log their info
       if(this.numToUpdateInRestTable != 0)
       {
         this.seatOrWait = "seated";
         this.updateFourTables();
         this.logUser()
       }
+      //No open tables of user selection set user to waiting and queue them
       else
       {
         this.seatOrWait = "waited";
         this.logUser()
       }
     }
+    //select a 6 person table for 5-6 guests
     if(this.currentNumber > 4 && this.currentNumber <= 6)
     {
-      //console.log(data[0].availableSixTables);
       this.numToUpdateInRestTable = data[0].availableSixTables;
+      //The location has an open table so seat the user and log their info
       if(this.numToUpdateInRestTable != 0)
       {
         this.seatOrWait = "seated";
         this.updateSixTables();
         this.logUser()
       }
+      //No open tables of user selection set user to waiting and queue them
       else
       {
         this.seatOrWait = "waited";
         this.logUser()
       }
     }
+    //No tables of this qunatity are supported
     if(this.currentNumber > 6)
     {
-      console.log("Parties this large are nto currently supported here.");
+      console.log("Parties this large are not currently supported here.");
     }
 
   }
