@@ -1,6 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonRadioGroup } from '@ionic/angular';
+import { AlertController, IonRadioGroup, LoadingController } from '@ionic/angular';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { environment } from 'src/environments/environment';
+import { SupabaseService } from '../services/supabase.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -13,20 +18,66 @@ export class SignupPage implements OnInit {
   //Get value on ionSelect on IonRadio item
   selectedRadioItem: any;
 
-  constructor(private router: Router) { }
+  supabase: SupabaseClient;
+  email: string;
+  pass: string;
+
+  credentials: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private alertController: AlertController,
+    private router: Router,
+    private loadingController: LoadingController,
+    private supabaseService: SupabaseService,
+  ) {
+    this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey, {
+      autoRefreshToken: true,
+      persistSession: true
+    });
+  }
 
   ngOnInit() {
+    this.credentials = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
   }
   radioGroupChange(event) {
     console.log('radioGroupChange',event.detail);
     this.selectedRadioGroup = event.detail;
   }
-  signUp(){
-    if(this.selectedRadioGroup.value === 'patron'){
-      this.router.navigate(['/patron-info']);
-    }
-    else{
-      this.router.navigate(['/restaurant-info']);
-    }
+
+  async signUp() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    this.supabaseService.signUp(this.credentials.value).then(async data => {
+      await loading.dismiss();
+      this.showError('Signup success', 'Please confirm your email now!');
+      this.addNewUser();
+      }, async err => {
+      await loading.dismiss();
+      const alert = await this.alertController.create({
+        header: 'Registration failed',
+        message: err.error.msg,
+        buttons: ['OK'],
+      });
+      await alert.present();
+    });
+  }
+
+  async showError(title, msg) {
+    const alert = await this.alertController.create({
+      header: title,
+      message: msg,
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+  async addNewUser() {
+    const { data, error } = await this.supabase.from('Users').insert([
+    { email: this.email, password: this.pass, userType: this.selectedRadioGroup.value },
+  ]);
   }
 }

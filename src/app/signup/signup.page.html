@@ -2,23 +2,27 @@
   <ion-grid>
     <ion-row class="ion-justify-content-evenly">
       <ion-col>
-  <div class="content">
+        <form (ngSubmit)="signUp()" [formGroup]="credentials">
+          <div class="input-group">
     <div class="ion-padding">
       <ion-img src="./assets/logo_red_bg.png"></ion-img>
+      <ion-item>
       <ion-input
         placeholder="Email"
         style="padding-left: 10px !important; font-family: 'Nunito', sans-serif"
-      ></ion-input>
+        formControlName="email"
+        [(ngModel)]="email"
+      ></ion-input></ion-item>
       <br />
+    <ion-item>
       <ion-input
         placeholder="Password"
+        type="password"
         style="padding-left: 10px !important; font-family: 'Nunito', sans-serif"
-      ></ion-input>
+        formControlName="password"
+        [(ngModel)]="pass"
+      ></ion-input></ion-item>
       <br />
-      <ion-input
-        placeholder="Confirm Password"
-        style="padding-left: 10px !important; font-family: 'Nunito', sans-serif"
-      ></ion-input>
 
       <ion-list>
         <ion-radio-group (ionChange)="radioGroupChange($event)">
@@ -42,7 +46,7 @@
         </ion-radio-group>
       </ion-list>
 
-    </div>
+      </div>
     <ion-button
       class="actionbutton"
       expand="full"
@@ -61,6 +65,7 @@
       >Already Have an Account?</ion-button
     >
   </div>
+  </form>
 </ion-col>
 </ion-row>
 </ion-grid>

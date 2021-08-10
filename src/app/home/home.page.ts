@@ -44,13 +44,19 @@ export class HomePage {
               userPhone: user.phone
             }
           };
-          if(user.userType == "restaurant")
+          if(user.userType == "restaurant" && user.phone)
           {
             this.router.navigate(['/restaurant-function'],navigationExtras)
           }
-          if(user.userType == "patron")
+          else{
+            this.router.navigate(['/restaurant-info'],navigationExtras)
+          }
+          if(user.userType == "patron" && user.phone)
           {
             this.router.navigate(['/map'],navigationExtras)
+          }
+          else{
+            this.router.navigate(['/patron-info'],navigationExtras)
           }
 
         }
