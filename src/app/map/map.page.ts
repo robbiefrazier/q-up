@@ -126,7 +126,8 @@ export class MapPage {
         title: marker.title,
         latitude: marker.latitude,
         longitude: marker.longitude,
-        distance: d
+        distance: d,
+        id: marker.markId
       });
       mapMarker.setMap(this.map);
       this.addInfoWindowToMarker(mapMarker);
@@ -151,9 +152,20 @@ export class MapPage {
       this.closeAllInfoWindows();
       infoWindow.open(this.map,marker);
 
+      console.log(marker.markId)
+      let navExtra: NavigationExtras = {
+        state: {
+          userEmail: this.userEmail,
+          userPhone: this.userPhone,
+          marker: marker.title
+        }
+      };
+      //console.log(navExtra)
+
       google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
         document.getElementById('book').addEventListener('click', () => {
-          this.router.navigate(['/patron']);
+          console.log(navExtra);
+          this.router.navigate(['/patron'],navExtra);
 
         })
       })
@@ -222,8 +234,10 @@ export class MapPage {
         title:obj.locationName,
         latitude:obj.latitude,
         longitude:obj.longitude,
+        markId:obj.MarkerId,
         number:num
       }
+      //console.log(object);
       num = num + 1;
       //push DB entry into the marker array
       markerArray.push(object)

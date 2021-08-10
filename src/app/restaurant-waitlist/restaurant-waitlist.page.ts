@@ -35,8 +35,7 @@ export class RestaurantWaitlistPage implements OnInit {
     this.columns = [
       {prop:'email',name: 'Email'},
       {prop:'phone',name: 'Phone'},
-      {prop:'size',name: 'Size' },
-      {prop:'time',name: 'Time' }
+      {prop:'size',name: 'Size' }
     ];
 
     this.route.queryParams.subscribe(params => {
@@ -74,7 +73,6 @@ export class RestaurantWaitlistPage implements OnInit {
       jsonData['email'] = data[item].userEmail
       jsonData['phone'] = data[item].userPhone.toString()
       jsonData['size'] = data[item].partySize.toString()
-      jsonData['time'] = data[item].timeStartWaitedOrSeated
 
       this.dbWaitList.waitList.push(jsonData);
     }
