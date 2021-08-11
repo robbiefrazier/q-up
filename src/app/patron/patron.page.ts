@@ -64,10 +64,15 @@ export class PatronPage implements OnInit {
 
   async sendToWait()
   {
-    //Check for the table they requested
-    this.checkForTable()
     this.router.navigate(['/patron-waitlist'])
   }
+
+  async sendToSeat()
+  {
+    //Check for the table they requested
+    this.router.navigate(['/patron-tableready'])
+  }
+
   async logUser()
   {
     const { data, error } = await this.supabase
@@ -105,13 +110,15 @@ export class PatronPage implements OnInit {
      {
        this.seatOrWait = "seated";
        this.updateTwoTables();
-       this.logUser()
+       this.logUser();
+       this.sendToSeat();
      }
      //No open tables of user selection set user to waiting and queue them
      if(this.numToUpdateInRestTable == 0)
      {
       this.seatOrWait = "waited";
-      this.logUser()
+      this.logUser();
+      this.sendToWait();
      }
     }
     //select a 4 person table for 3-4 guests
@@ -123,13 +130,15 @@ export class PatronPage implements OnInit {
       {
         this.seatOrWait = "seated";
         this.updateFourTables();
-        this.logUser()
+        this.logUser();
+        this.sendToSeat();
       }
       //No open tables of user selection set user to waiting and queue them
       else
       {
         this.seatOrWait = "waited";
-        this.logUser()
+        this.logUser();
+        this.sendToWait();
       }
     }
     //select a 6 person table for 5-6 guests
@@ -141,13 +150,15 @@ export class PatronPage implements OnInit {
       {
         this.seatOrWait = "seated";
         this.updateSixTables();
-        this.logUser()
+        this.logUser();
+        this.sendToSeat();
       }
       //No open tables of user selection set user to waiting and queue them
       else
       {
         this.seatOrWait = "waited";
-        this.logUser()
+        this.logUser();
+        this.sendToWait();
       }
     }
     //No tables of this qunatity are supported
