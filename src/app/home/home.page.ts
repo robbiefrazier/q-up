@@ -44,19 +44,23 @@ export class HomePage {
               userPhone: user.phone
             }
           };
-          if(user.userType == "restaurant" && user.phone)
+          if(user.userType === 'restaurant')
           {
-            this.router.navigate(['/restaurant-function'],navigationExtras)
+            if(user.phone){
+              this.router.navigate(['/restaurant-function'],navigationExtras);
+            }
+            else{
+              this.router.navigate(['/restaurant-info'],navigationExtras);
+            }
           }
-          else{
-            this.router.navigate(['/restaurant-info'],navigationExtras)
-          }
-          if(user.userType == "patron" && user.phone)
+          if(user.userType === 'patron')
           {
-            this.router.navigate(['/map'],navigationExtras)
-          }
-          else{
-            this.router.navigate(['/patron-info'],navigationExtras)
+            if(user.phone){
+              this.router.navigate(['/map'],navigationExtras);
+            }
+            else{
+              this.router.navigate(['/patron-info'],navigationExtras);
+            }
           }
 
         }

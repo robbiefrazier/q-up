@@ -47,7 +47,7 @@ export class SupabaseService {
     return this.curentUser.asObservable();
   }
 
-  async signUp(credentials: { email; password; phone }) {
+  async signUp(credentials: { email; password }) {
     return new Promise(async (resolve, reject) => {
       const { error, data } = await this.supabase.auth.signUp(credentials);
       if (error) {
@@ -58,7 +58,7 @@ export class SupabaseService {
     });
   }
 
-  signIn(credentials: { email; password; phone }) {
+  signIn(credentials: { email; password }) {
     return new Promise(async (resolve, reject) => {
       const { error, data } = await this.supabase.auth.signIn(credentials);
       if (error) {
