@@ -21,7 +21,6 @@ export class SignupPage implements OnInit {
   supabase: SupabaseClient;
   email: string;
   pass: string;
-  numbe: any;
 
   credentials: FormGroup;
 
@@ -41,8 +40,7 @@ export class SignupPage implements OnInit {
   ngOnInit() {
     this.credentials = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      numbe: ['', Validators.required]
+      password: ['', Validators.required]
     });
   }
   radioGroupChange(event) {
@@ -79,7 +77,7 @@ export class SignupPage implements OnInit {
   }
   async addNewUser() {
     const { data, error } = await this.supabase.from('Users').insert([
-    { email: this.email, password: this.pass, phone: this.numbe, userType: this.selectedRadioGroup.value },
+    { email: this.email, password: this.pass, userType: this.selectedRadioGroup.value },
   ]);
   }
 }
