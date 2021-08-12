@@ -2,7 +2,7 @@
   <ion-grid>
     <ion-row class="ion-justify-content-evenly">
       <ion-col>
-        <form (ngSubmit)="signUp()" [formGroup]="credentials">
+        <form [formGroup]="credentials">
           <div class="input-group">
     <div class="ion-padding">
       <ion-img src="./assets/logo_red_bg.png"></ion-img>
@@ -23,6 +23,14 @@
         [(ngModel)]="pass"
       ></ion-input></ion-item>
       <br />
+      <ion-item>
+        <ion-input minlength="10" maxlength="10"
+          placeholder="Phone Number"
+          style="padding-left: 10px !important; font-family: 'Nunito', sans-serif"
+          formControlName="numbe"
+          [(ngModel)]="numbe"
+        ></ion-input></ion-item>
+        <br />
 
       <ion-list>
         <ion-radio-group (ionChange)="radioGroupChange($event)">
