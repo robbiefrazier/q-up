@@ -15,6 +15,7 @@ export class PatronPage implements OnInit {
   userPhone:any;
   restName:any;
   restId:any;
+  name:any;
   numToUpdateInRestTable:any;
   supabase: SupabaseClient;
   seatOrWait:any;
@@ -64,7 +65,12 @@ export class PatronPage implements OnInit {
 
   async sendToWait()
   {
-    this.router.navigate(['/patron-waitlist'])
+    let navExtra: NavigationExtras = {
+      state: {
+        restId: this.restId
+      }
+    };
+    this.router.navigate(['/patron-waitlist'],navExtra)
   }
 
   async sendToSeat()
@@ -78,7 +84,7 @@ export class PatronPage implements OnInit {
     const { data, error } = await this.supabase
     .from('waitList')
     .insert([
-    { userEmail : this.userEmail, userPhone : this.userPhone, partySize : this.currentNumber, seatedOrWaited : this.seatOrWait, restId:this.restId}
+    { userEmail : this.userEmail, userPhone : this.userPhone, partySize : this.currentNumber, seatedOrWaited : this.seatOrWait, restId:this.restId,reservationName:this.name}
     ])
   }
 
