@@ -58,6 +58,18 @@ const routes: Routes = [
     path: 'patron-tableready',
     loadChildren: () => import('./patron-tableready/patron-tableready.module').then( m => m.PatronTablereadyPageModule)
   },
+  {
+    path: 'restaurant-edit',
+    loadChildren: () => import('./restaurant-edit/restaurant-edit.module').then( m => m.RestaurantEditPageModule)
+  },
+  {
+    path: 'restaurant-edit-seat',
+    loadChildren: () => import('./restaurant-edit-seat/restaurant-edit-seat.module').then( m => m.RestaurantEditSeatPageModule)
+  },
+  {
+    path: 'restaurant-edit-unseat',
+    loadChildren: () => import('./restaurant-edit-unseat/restaurant-edit-unseat.module').then( m => m.RestaurantEditUnseatPageModule)
+  },
 
 
 

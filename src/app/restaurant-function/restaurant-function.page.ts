@@ -10,7 +10,7 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 export class RestaurantFunctionPage   {
 
   userEmail: any;
-  userPhone: any;
+  //userPhone: any;
 
   constructor(private route: ActivatedRoute,private router: Router) {
 
@@ -18,11 +18,11 @@ export class RestaurantFunctionPage   {
       if (this.router.getCurrentNavigation().extras.state) {
         //set the data var to be the array of markers passed in
         this.userEmail = this.router.getCurrentNavigation().extras.state.userEmail;
-        this.userPhone = this.router.getCurrentNavigation().extras.state.userPhone;
+        //this.userPhone = this.router.getCurrentNavigation().extras.state.userPhone;
       }
       console.log("THESE ARE THE USER DEETS:")
       console.log(this.userEmail);
-      console.log(this.userPhone);
+      //console.log(this.userPhone);
     });
   }
 
@@ -60,6 +60,16 @@ export class RestaurantFunctionPage   {
     };
     //Navigate to the info
     this.router.navigate(['/restaurant-info'], navigationExtras)
+  }
+
+  async editWaitlist()
+  {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        restEmail: this.userEmail
+      }
+    };
+    this.router.navigate(['/restaurant-edit'], navigationExtras)
   }
 }
 

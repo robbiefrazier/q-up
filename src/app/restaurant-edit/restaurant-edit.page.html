@@ -10,7 +10,7 @@
       expand="full"
       fill="clear"
       style="text-transform: none"
-      (click)="showWait()"><b>View Waitlist</b></ion-button
+      (click)="goToSeat()"><b>Seat Patron</b></ion-button
     >
     <br>
     <ion-button
@@ -18,24 +18,23 @@
     expand="full"
     fill="clear"
     style="text-transform: none"
-    (click)="showFloorPlan()"><b>View Floorplan</b></ion-button
+    (click)="goToUnseat()"><b>Clear A Table</b></ion-button
   >
-  <br>
-    <ion-button
-    class="actionbutton"
-    expand="full"
-    fill="clear"
-    style="text-transform: none"
-    (click)="showInfo()"><b>View Info</b></ion-button
-  >
-  <br>
-    <ion-button
-    class="actionbutton"
-    expand="full"
-    fill="clear"
-    style="text-transform: none"
-    (click)="editWaitlist()"><b>Edit Waitlist</b></ion-button
-  >
+
+  <ion-button
+      fill="clear"
+      style="
+        font-size: small;
+        color: #f2f2f2;
+        text-transform: none;
+        font-family: 'Nunito', sans-serif;
+      "
+      routerLink="/restaurant-function"
+      routerDirection="root"
+      ><p style="font-size: small">
+        Back
+      </p></ion-button
+    >
 </div>
 </div>
 

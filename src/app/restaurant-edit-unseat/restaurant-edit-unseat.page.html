@@ -1,0 +1,33 @@
+<ion-content>
+  <br>
+  <br>
+  <br>
+  <div class="ion-padding">
+    <ion-input
+      placeholder="Table Number"
+      [(ngModel)] ="table"
+      style="padding-left: 10px !important; font-family: 'Nunito', sans-serif"
+    ></ion-input>
+  </div>
+  <ion-button
+    class="actionbutton"
+    expand="full"
+    fill="clear"
+    style="text-transform: none"
+    (click)="getTableEmail()"><b>Clear Table</b></ion-button
+  >
+  <ion-button
+      fill="clear"
+      style="
+        font-size: small;
+        color: #f2f2f2;
+        text-transform: none;
+        font-family: 'Nunito', sans-serif;
+      "
+      routerLink="/restaurant-function"
+      routerDirection="root"
+      ><p style="font-size: small">
+        Cancel
+      </p></ion-button
+    >
+</ion-content>
