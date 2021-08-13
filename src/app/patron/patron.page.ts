@@ -63,13 +63,23 @@ export class PatronPage implements OnInit {
     toast.present();
   }
 
+  async presentWaitedToast() {
+    const toast = await this.toastController.create({
+      message: 'These are the other guest infront of you. You will be alerted when your table is ready!',
+      duration: 7000
+    });
+    toast.present();
+  }
+
   async sendToWait()
   {
     let navExtra: NavigationExtras = {
       state: {
-        restId: this.restId
+        restId: this.restId,
+        userEmail: this.userEmail
       }
     };
+    this.presentWaitedToast();
     this.router.navigate(['/patron-waitlist'],navExtra)
   }
 
