@@ -5,16 +5,10 @@
         <div class="content">
           <div class="ion-padding">
             <ion-img src="./assets/logo_red_bg.png"></ion-img>
-            <ion-label position="floating">First Name</ion-label>
-            <ion-input type="text" (keypress)="keyPressAlpha($event)" required></ion-input>
-            <br/>
-            <ion-label position="floating">Last Name</ion-label>
-            <ion-input type="text" (keypress)="keyPressAlpha($event)" required></ion-input>
-            <br/>
             <ion-label position="floating">Enter 10-digit Phone Number</ion-label>
-            <ion-input type="tel" maxlength="10" minlength="10"
-            name="userCount"
-            (keypress)="numberOnlyValidation($event)" required></ion-input>
+            <ion-input required type="tel" minlength="10" maxlength="10"
+            [(ngModel)]="phoneNum"
+            (keypress)="numberOnlyValidation($event)"></ion-input>
             <br/>
           </div>
           <ion-button
@@ -22,6 +16,8 @@
             expand="full"
             fill="clear"
             style="text-transform: none"
+            [disabled]="!phoneNum || phoneNum.length < 10"
+            (click)="patInfo()"
             routerLink="/map"
             routerDirection="root"
             ><b>Submit</b></ion-button>

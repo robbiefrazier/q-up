@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-patron-info',
@@ -6,8 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patron-info.page.scss'],
 })
 export class PatronInfoPage implements OnInit {
+  supabase: SupabaseClient;
+  email: any;
+  phoneNum: any;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey, {
+      autoRefreshToken: true,
+      persistSession: true
+    });
+
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        //Get user email, phone and location selection from Map page
+        this.email = this.router.getCurrentNavigation().extras.state.userEmail;
+      }
+    });
+  }
 
   ngOnInit() {
   }
@@ -33,5 +51,9 @@ export class PatronInfoPage implements OnInit {
       return false;
     }
   }
-
+  async patInfo(){
+    const { data, error } = await this.supabase.from('Users')
+    .update({ phone: this.phoneNum })
+    .eq('email', this.email);
+  }
 }

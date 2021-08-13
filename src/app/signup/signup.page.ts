@@ -60,7 +60,7 @@ export class SignupPage implements OnInit {
       await loading.dismiss();
       const alert = await this.alertController.create({
         header: 'Registration failed',
-        message: err.error.msg,
+        message: 'Incorrect Input',
         buttons: ['OK'],
       });
       await alert.present();
